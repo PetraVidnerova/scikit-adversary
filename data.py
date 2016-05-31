@@ -1,6 +1,6 @@
 from keras.datasets import mnist 
 import matplotlib.pyplot as plot 
-
+import random 
 
 def load_zeros():
     (X_train, Y_train), (X_test, Y_test) = mnist.load_data() 
@@ -12,9 +12,10 @@ def load_zeros():
 
     return ZERO_train, ZERO_test 
 
-def plot(x):
+def plot_example(x):
     X = x.reshape(28, 28) 
-    
+    plot.imshow(X, interpolation="none", cmap=plot.cm.Greys)
+    plot.show() 
 
 
 if __name__ == "__main__":
@@ -22,4 +23,9 @@ if __name__ == "__main__":
     print(ZERO_train.shape) 
     print(ZERO_test.shape) 
 
-
+    for x in range(10):
+        plot_example(random.choice(ZERO_train)) 
+    
+    for x in range(10):
+        plot_example(random.choice(ZERO_test))
+    
